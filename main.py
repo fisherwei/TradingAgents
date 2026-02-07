@@ -8,8 +8,10 @@ load_dotenv()
 
 # Create a custom config
 config = DEFAULT_CONFIG.copy()
-config["deep_think_llm"] = "gpt-5-mini"  # Use a different model
-config["quick_think_llm"] = "gpt-5-mini"  # Use a different model
+config["llm_provider"] = "others"
+config["deep_think_llm"] = "claude-opus-4-5-20251101"  # Use a different model
+config["quick_think_llm"] = "claude-opus-4-5-20251101"  # Use a different model
+config["backend_url"] = "https://claude.buzz7.top/v1"
 config["max_debate_rounds"] = 1  # Increase debate rounds
 
 # Configure data vendors (default uses yfinance, no extra API keys needed)
@@ -24,7 +26,7 @@ config["data_vendors"] = {
 ta = TradingAgentsGraph(debug=True, config=config)
 
 # forward propagate
-_, decision = ta.propagate("NVDA", "2024-05-10")
+_, decision = ta.propagate("NVDA", "2026-02-06")
 print(decision)
 
 # Memorize mistakes and reflect
